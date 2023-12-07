@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,27 +10,38 @@ namespace SantaProject
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float _speed;
+        
+        [Header("Weapon")]
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _bulletDirection;
         [SerializeField] private Transform _bulletContainer;
         [SerializeField] private float _fireRate;
         
-        private PlayerStats _playerStats;
-        private Vector2 _move, _mouseLook;
-        private Vector3 _rotationTarget;
-        private InputManager _controls;
-        private bool _canShoot = true;
+        [Header("Dash Attributes")]
+        [SerializeField] private float _dashingPower = 5f;
+        [SerializeField] private float _dashingTime = 0.3f;
+        [SerializeField] private float _dashingCooldown = 1f;
+
+        #region Variables
+
         private bool _isDashing;
 
-        private Animator _animator;
+        private Vector2 _move, _mouseLook;
+        private Vector3 _rotationTarget;
+        private bool _canShoot = true;
         private bool _isMoving;
-        
+
+        private PlayerStats _playerStats;
+        private InputManager _controls;
+        private Animator _animator;
+
         public float FireRate
         {
             get => _fireRate;
 
             set => _fireRate = value;
         }
+        #endregion
         
         #region Unity Methods
 
@@ -43,6 +55,7 @@ namespace SantaProject
         private void Start()
         {
             _controls.Player.Shoot.performed += _ => Shoot();
+            _controls.Player.Dash.performed += _ => Dash();
         }
 
         void Update()
@@ -90,6 +103,22 @@ namespace SantaProject
         #endregion
 
         #region Private Methods
+        
+        private void Dash()
+        {
+            if (!_isDashing)
+            {
+                StartCoroutine(DashCoroutine());
+            }
+        }
+
+        private IEnumerator DashCoroutine()
+        {
+            _isDashing = true;
+            transform.DOMove(transform.position + (new Vector3(_move.x, 0f, _move.y) * _dashingPower), _dashingTime);
+            yield return new WaitForSeconds(_dashingCooldown);
+            _isDashing = false;
+        }
 
         private void Move()
         {
