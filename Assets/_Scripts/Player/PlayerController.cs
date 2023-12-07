@@ -116,6 +116,7 @@ namespace SantaProject
         {
             _isDashing = true;
             transform.DOMove(transform.position + (new Vector3(_move.x, 0f, _move.y) * _dashingPower), _dashingTime);
+            EventManager.Instance.onDashPressed.Invoke(_dashingCooldown);
             yield return new WaitForSeconds(_dashingCooldown);
             _isDashing = false;
         }

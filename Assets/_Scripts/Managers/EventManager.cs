@@ -13,6 +13,7 @@ namespace SantaProject
         public Action<int, int> onExpChange;
         public Action<Transform> enemyDeadEvent;
         public Action onPresentCollected;
+        public Action<float> onDashPressed;
 
         // Singleton Check
         private void Awake()
