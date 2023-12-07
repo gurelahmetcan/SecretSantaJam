@@ -169,31 +169,6 @@ namespace SantaProject
                 _playerStats.TakeDamage(other.gameObject.GetComponent<Enemy>().GiveDamage());
             }
         }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("Experience"))
-            {
-                var item = other.gameObject.GetComponent<Exp>();
-                EventManager.Instance.AddExperience(item.experience);
-                item.DestroyGameObject();
-            }
-
-            if (other.gameObject.CompareTag("HealthCollectible"))
-            {
-                var item = other.gameObject.GetComponent<HPCollectible>();
-                _playerStats.TakeHeal(item.hpAmount);
-                item.DestroyGameObject();
-            }
-
-            if (other.gameObject.CompareTag("Present"))
-            {
-                var item = other.gameObject.GetComponent<Present>();
-                EventManager.Instance.onPresentCollected.Invoke();
-                item.DestroyGameObject();
-            }
-        }
-
         #endregion
     }
     

@@ -9,6 +9,7 @@ namespace SantaProject
     {
         [SerializeField] private GameObject expPrefab;
         [SerializeField] private GameObject player;
+        [SerializeField] private Magnet magnet;
 
         private static GameManager _instance;
 
@@ -41,6 +42,11 @@ namespace SantaProject
             Instantiate(expPrefab, new Vector3(position.x, 0.5f, position.z), pos.rotation);
         }
 
+        public void HealPlayer(int healAmount)
+        {
+            player.GetComponent<PlayerStats>().TakeHeal(healAmount);
+        }
+
         public void UpgradePlayer(Constants.UpgradeType upgradeType)
         {
             Debug.Log($"Upgrade Type: {upgradeType}");
@@ -60,6 +66,7 @@ namespace SantaProject
                     player.GetComponent<PlayerController>().FireRate -= .1f;
                     break;
                 case Constants.UpgradeType.CollectRange:
+                    magnet.UpgradeMagnetRange();
                     break;
                 case Constants.UpgradeType.ExpModifier:
                     break;

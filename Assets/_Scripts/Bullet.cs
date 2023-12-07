@@ -29,9 +29,8 @@ namespace SantaProject
             if (other.gameObject.CompareTag("Enemy"))
             {
                 other.gameObject.GetComponent<Enemy>().TakeDamage(_damage);
+                Destroy(gameObject);
             }
-            
-            Destroy(gameObject);
         }
     }
     

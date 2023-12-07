@@ -8,6 +8,7 @@ TagManager:
   - HealthCollectible
   - Experience
   - Present
+  - CollectDetector
   layers:
   - Default
   - TransparentFX

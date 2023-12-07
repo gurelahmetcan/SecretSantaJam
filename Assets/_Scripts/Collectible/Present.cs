@@ -1,11 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
-public class Present : MonoBehaviour
+namespace SantaProject
 {
-    public void DestroyGameObject()
+    public class Present : MonoBehaviour
     {
-        Destroy(gameObject);
+        public void DestroyGameObject()
+        {
+            Sequence mySequence = DOTween.Sequence();
+            mySequence.Append(transform.DOMove(FindObjectOfType<PlayerStats>().transform.position, 0.2f));
+            mySequence.AppendCallback((() => Destroy(gameObject)));
+        }
     }
 }
+
