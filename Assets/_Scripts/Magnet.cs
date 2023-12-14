@@ -24,22 +24,19 @@ namespace SantaProject
             if (other.gameObject.CompareTag("Experience"))
             {
                 var item = other.gameObject.GetComponent<Exp>();
-                EventManager.Instance.AddExperience(item.experience);
-                item.DestroyGameObject();
+                item.Collect();
             }
 
             if (other.gameObject.CompareTag("HealthCollectible"))
             {
                 var item = other.gameObject.GetComponent<HPCollectible>();
-                GameManager.Instance.HealPlayer(item.hpAmount);
-                item.DestroyGameObject();
+                item.Collect();
             }
 
             if (other.gameObject.CompareTag("Present"))
             {
                 var item = other.gameObject.GetComponent<Present>();
-                EventManager.Instance.onPresentCollected.Invoke();
-                item.DestroyGameObject();
+                item.Collect();
             }
         }
     }

@@ -3,7 +3,42 @@ guid: b0407dae81c2ab7429e2b8e02540bfe5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_beard
+    second: {fileID: 2100000, guid: 44912b9152386cd4f872d84f01b536c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_body
+    second: {fileID: 2100000, guid: d79321ead3e99ef4f9d62e35798fed04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_eyes
+    second: {fileID: 2100000, guid: 314ec5ad50a609646b01047abbe82c6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_hands
+    second: {fileID: 2100000, guid: eb0ce85c480c54c479be1dbcf1085b6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_hat
+    second: {fileID: 2100000, guid: b4e0dcff2d147ea4b821300339548b08, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_headTESTPAINT
+    second: {fileID: 2100000, guid: f88e123bec94d8149955327f5ef96954, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_shotgun
+    second: {fileID: 2100000, guid: cf8d732e4458ecc4c853a529c1de2ca6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -16,8 +51,7 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
-      human bone 'LeftUpperLeg' not found\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 

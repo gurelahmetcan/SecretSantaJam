@@ -6,11 +6,17 @@ namespace SantaProject
     public class Bullet : MonoBehaviour
     {
         [SerializeField] private float _speed = 12f;
-        [SerializeField] private int _damage = 2;
-
+        
+        private int _damage;
+        
         void Update()
         {
             transform.Translate(transform.forward * _speed * Time.deltaTime, Space.World);
+        }
+
+        public void SetDamage(int dmg)
+        {
+            _damage = dmg;
         }
 
         IEnumerator DestroyBulletAfterTimeCoroutine()
@@ -27,8 +33,8 @@ namespace SantaProject
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Enemy"))
-            {
-                other.gameObject.GetComponent<Enemy>().TakeDamage(_damage);
+            { 
+                other.gameObject.GetComponent<Enemy>().Damage(_damage);
                 Destroy(gameObject);
             }
         }

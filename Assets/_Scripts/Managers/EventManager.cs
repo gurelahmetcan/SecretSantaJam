@@ -7,12 +7,18 @@ namespace SantaProject
     {
         public static EventManager Instance;
 
+        [Header("Pick Up Events")]
         public Action<int> onExperienceChange;
         public Action<int> onLevelUp;
         public Action<int, int> onHealthChange;
         public Action<int, int> onExpChange;
-        public Action<Transform> enemyDeadEvent;
         public Action onPresentCollected;
+
+        public Action<Transform> enemyDeadEvent;
+
+        [Header("Player Events")] 
+        public Action onShootPressed;
+        public Action onShoot;
         public Action<float> onDashPressed;
 
         // Singleton Check

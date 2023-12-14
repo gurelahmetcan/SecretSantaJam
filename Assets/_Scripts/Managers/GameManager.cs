@@ -59,11 +59,14 @@ namespace SantaProject
 
                     break;
                 case Constants.UpgradeType.FireRate:
+                    // TODO: FireRate Upgrade
+                    /*
                     if (player.GetComponent<PlayerController>().FireRate <= 0)
                     {
                         break;
                     }
                     player.GetComponent<PlayerController>().FireRate -= .1f;
+                    */
                     break;
                 case Constants.UpgradeType.CollectRange:
                     magnet.UpgradeMagnetRange();

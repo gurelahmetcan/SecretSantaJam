@@ -3,7 +3,12 @@ guid: 781ad98f767252f44b9a6be2fd3cb309
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_gingerbread_man
+    second: {fileID: 2100000, guid: 9e393b2266dc8614cb73943c76e4260e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

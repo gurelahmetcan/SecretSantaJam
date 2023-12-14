@@ -7,11 +7,12 @@ namespace SantaProject
     {
         public int hpAmount;
 
-        public void DestroyGameObject()
+        public void Collect()
         {
             Sequence mySequence = DOTween.Sequence();
-            mySequence.Append(transform.DOMove(FindObjectOfType<PlayerStats>().transform.position, 0.2f));
-            mySequence.AppendCallback((() => Destroy(gameObject)));
+            mySequence.Append(transform.DOMove(FindObjectOfType<PlayerStats>().transform.position, 0.2f))
+                .AppendCallback(() => GameManager.Instance.HealPlayer(hpAmount))
+                .AppendCallback(() => Destroy(gameObject));
         }
     }    
 }

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace SantaProject
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, IDamageable
     {
         [SerializeField] private int hp;
         [SerializeField] private int damage;
@@ -30,6 +30,8 @@ namespace SantaProject
         private bool _isMoving;
 
         #endregion
+
+        #region Unity Methods
 
         private void Awake()
         {
@@ -53,7 +55,9 @@ namespace SantaProject
             ChasePlayer();
         }
 
-        public void TakeDamage(int damageTaken)
+        #endregion
+        
+        public void Damage(int damageTaken)
         {
             hp -= damageTaken;
             

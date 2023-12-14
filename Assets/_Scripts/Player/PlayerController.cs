@@ -11,12 +11,6 @@ namespace SantaProject
     {
         [SerializeField] private float _speed;
         
-        [Header("Weapon")]
-        [SerializeField] private GameObject _bulletPrefab;
-        [SerializeField] private Transform _bulletDirection;
-        [SerializeField] private Transform _bulletContainer;
-        [SerializeField] private float _fireRate;
-        
         [Header("Dash Attributes")]
         [SerializeField] private float _dashingPower = 5f;
         [SerializeField] private float _dashingTime = 0.3f;
@@ -28,19 +22,12 @@ namespace SantaProject
 
         private Vector2 _move, _mouseLook;
         private Vector3 _rotationTarget;
-        private bool _canShoot = true;
         private bool _isMoving;
 
         private PlayerStats _playerStats;
         private InputManager _controls;
         private Animator _animator;
-
-        public float FireRate
-        {
-            get => _fireRate;
-
-            set => _fireRate = value;
-        }
+        
         #endregion
         
         #region Unity Methods
@@ -54,8 +41,9 @@ namespace SantaProject
 
         private void Start()
         {
-            _controls.Player.Shoot.performed += _ => Shoot();
+            _controls.Player.Shoot.performed += _ => EventManager.Instance.onShootPressed?.Invoke();
             _controls.Player.Dash.performed += _ => Dash();
+            //EventManager.Instance.onShoot += () => _animator.SetTrigger("isAttacking");
         }
 
         void Update()
@@ -143,23 +131,6 @@ namespace SantaProject
         {
             _isMoving = (movement.x > 0.1f || movement.x < -0.1f) || (movement.z > 0.1f || movement.z < -0.1f);
             _animator.SetBool("isWalking", _isMoving);
-        }
-
-        private void Shoot()
-        {
-            if (!_canShoot) return;
-            
-            GameObject bullet = Instantiate(_bulletPrefab, _bulletDirection.position, _bulletDirection.rotation, _bulletContainer);
-            bullet.SetActive(true);
-            _animator.SetTrigger("isAttacking");
-            StartCoroutine(CanShootCoroutine());
-        }
-
-        IEnumerator CanShootCoroutine()
-        {
-            _canShoot = false;
-            yield return new WaitForSeconds(_fireRate);
-            _canShoot = true;
         }
 
         private void OnCollisionEnter(Collision other)
