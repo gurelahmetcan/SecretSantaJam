@@ -7,14 +7,20 @@ namespace SantaProject
 {
     public class WeaponHolder : MonoBehaviour
     {
-        [SerializeField] private GameObject[] weapons;
+        [SerializeField] private Gun[] weapons;
         [SerializeField] private Animator animator;
         
         private int selectedWeapon = 0;
 
         private void Start()
         {
+            EventManager.Instance.onShootPressed += Shoot;
             SelectWeapon();
+        }
+
+        private void OnDestroy()
+        {
+            EventManager.Instance.onShootPressed -= Shoot;
         }
 
         private void Update()
@@ -42,9 +48,14 @@ namespace SantaProject
             animator.SetInteger("weapon", selectedWeapon);
             foreach (var weapon in weapons)
             {
-                weapon.SetActive(i == selectedWeapon);
+                weapon.gameObject.SetActive(i == selectedWeapon);
                 i++;
             }
+        }
+
+        private void Shoot()
+        {
+            weapons[selectedWeapon].Shoot();
         }
     }
 }

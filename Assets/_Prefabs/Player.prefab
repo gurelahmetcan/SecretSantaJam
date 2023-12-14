@@ -86,7 +86,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &324245461341840080
 Transform:
   m_ObjectHideFlags: 0
@@ -172,6 +172,7 @@ MonoBehaviour:
     type: 3}
   _bulletDirection: {fileID: 3616666264074501954}
   _bulletContainer: {fileID: 0}
+  _particle: {fileID: 8466436240618363759}
 --- !u!1 &1238723680070510647
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +287,7 @@ MonoBehaviour:
     type: 3}
   _bulletDirection: {fileID: 6168959050823354887}
   _bulletContainer: {fileID: 0}
+  _particle: {fileID: 0}
 --- !u!1 &2229848701958092965
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,8 +432,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 1103133678751142241}
-  - {fileID: 3775140107202388826}
+  - {fileID: 7573806144199342306}
+  - {fileID: 8712717431249457423}
   animator: {fileID: 7340332359955646207}
 --- !u!1 &2839343088452916344
 GameObject:
@@ -675,7 +677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5255821567662079794
 Transform:
   m_ObjectHideFlags: 0
@@ -760,6 +762,7 @@ MonoBehaviour:
     type: 3}
   _bulletDirection: {fileID: 6168959050823354887}
   _bulletContainer: {fileID: 0}
+  _particle: {fileID: 2076470755441761950}
 --- !u!1 &4150494184161213267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1227,7 @@ MonoBehaviour:
     type: 3}
   _bulletDirection: {fileID: 3616666264074501954}
   _bulletContainer: {fileID: 0}
+  _particle: {fileID: 0}
 --- !u!1 &6157051776077360253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,11 +1354,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol particle
       objectReference: {fileID: 0}
-    - target: {fileID: 6403187562934803687, guid: 55db457399bb04948a9a95bd4342e748,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1363,6 +1362,12 @@ PrefabInstance:
 --- !u!4 &1016827280643919425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5967925966588630710, guid: 55db457399bb04948a9a95bd4342e748,
+    type: 3}
+  m_PrefabInstance: {fileID: 6687328719816448247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8466436240618363759 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3004174650182747032, guid: 55db457399bb04948a9a95bd4342e748,
     type: 3}
   m_PrefabInstance: {fileID: 6687328719816448247}
   m_PrefabAsset: {fileID: 0}
@@ -1429,16 +1434,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun particle
       objectReference: {fileID: 0}
-    - target: {fileID: 7990683622143264622, guid: 3dae5f33b986240429fd2064f6778a08,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dae5f33b986240429fd2064f6778a08, type: 3}
+--- !u!198 &2076470755441761950 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7216244879562240353, guid: 3dae5f33b986240429fd2064f6778a08,
+    type: 3}
+  m_PrefabInstance: {fileID: 8715691623492497407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5608871554562044392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3828883959134592535, guid: 3dae5f33b986240429fd2064f6778a08,

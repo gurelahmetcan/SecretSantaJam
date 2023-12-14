@@ -1103,11 +1103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3754a4aecd82ba041a6d5b7b5d849f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 15
   damage: 2
   _agent: {fileID: 1118956115364604910}
   type: 0
-  weight: 0
+  weight: 100
   prefab: {fileID: 7840162258690823560}
   chance: 100
 --- !u!195 &1118956115364604910

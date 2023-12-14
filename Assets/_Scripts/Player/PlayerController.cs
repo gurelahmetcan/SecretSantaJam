@@ -44,7 +44,7 @@ namespace SantaProject
         {
             _controls.Player.Shoot.performed += _ => EventManager.Instance.onShootPressed?.Invoke();
             _controls.Player.Dash.performed += _ => Dash();
-            EventManager.Instance.onShoot += () => ShootAnim();
+            EventManager.Instance.onShoot += ShootAnim;
         }
 
         void Update()

@@ -14,6 +14,7 @@ namespace SantaProject
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _bulletDirection;
         [SerializeField] private Transform _bulletContainer;
+        [SerializeField] private ParticleSystem _particle;
 
         #endregion
 
@@ -28,7 +29,7 @@ namespace SantaProject
 
         private void Start()
         {
-            EventManager.Instance.onShootPressed += Shoot;
+            //EventManager.Instance.onShootPressed += Shoot;
             weaponData.currentAmmo = weaponData.magSize;
             weaponData.reloading = false;
         }
@@ -45,7 +46,7 @@ namespace SantaProject
 
         private void OnDestroy()
         {
-            EventManager.Instance.onShootPressed -= Shoot;
+            //EventManager.Instance.onShootPressed -= Shoot;
         }
 
         #endregion
@@ -68,16 +69,17 @@ namespace SantaProject
             weaponData.reloading = false;
         }
 
-        private void Shoot()
+        public void Shoot()
         {
             if (weaponData.currentAmmo > 0 && _canShoot && weaponData.id == GameManager.Instance.weaponHolder.GetSelectedWeapon())
             {
+                timeSinceLastShot = 0;
                 GameObject bullet = Instantiate(_bulletPrefab, _bulletDirection.position, _bulletDirection.rotation, _bulletContainer);
                 bullet.GetComponent<Bullet>().SetDamage(weaponData.damage);
                 bullet.SetActive(true);
+                _particle.Play();
                 EventManager.Instance.onShoot?.Invoke();
                 weaponData.currentAmmo--;
-                timeSinceLastShot = 0;
             }
         }
     }
