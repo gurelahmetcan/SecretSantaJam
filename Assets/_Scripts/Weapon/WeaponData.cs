@@ -9,6 +9,7 @@ namespace SantaProject
     {
         [Header("Info")]
         public new string name;
+        public int id;
 
         [Header("Shooting")]
         public int damage;

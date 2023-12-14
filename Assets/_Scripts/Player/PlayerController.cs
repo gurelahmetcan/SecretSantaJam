@@ -135,6 +135,7 @@ namespace SantaProject
         private void AnimateMove(Vector3 movement)
         {
             _isMoving = (movement.x > 0.1f || movement.x < -0.1f) || (movement.z > 0.1f || movement.z < -0.1f);
+            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
             _animator.SetBool("isWalking", _isMoving);
         }
 

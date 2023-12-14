@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   name: Shotgun
+  id: 1
   damage: 10
   maxDistance: 100
   currentAmmo: 6
   magSize: 6
   fireRate: 200
   reloadTime: 3
-  reloading: 1
+  reloading: 0

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   name: Pistol
+  id: 0
   damage: 5
   maxDistance: 150
   currentAmmo: 12

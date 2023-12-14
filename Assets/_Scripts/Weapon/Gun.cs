@@ -70,7 +70,7 @@ namespace SantaProject
 
         private void Shoot()
         {
-            if (weaponData.currentAmmo > 0 && _canShoot && gameObject.activeSelf)
+            if (weaponData.currentAmmo > 0 && _canShoot && weaponData.id == GameManager.Instance.weaponHolder.GetSelectedWeapon())
             {
                 GameObject bullet = Instantiate(_bulletPrefab, _bulletDirection.position, _bulletDirection.rotation, _bulletContainer);
                 bullet.GetComponent<Bullet>().SetDamage(weaponData.damage);

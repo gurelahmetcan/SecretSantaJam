@@ -10,7 +10,7 @@ namespace SantaProject
         [SerializeField] private GameObject expPrefab;
         [SerializeField] private GameObject player;
         [SerializeField] private Magnet magnet;
-        [SerializeField] private WeaponHolder weaponHolder;
+        public WeaponHolder weaponHolder;
 
         private static GameManager _instance;
 
@@ -35,6 +35,11 @@ namespace SantaProject
         private void Start()
         {
             EventManager.Instance.enemyDeadEvent += OnEnemyDead;
+        }
+
+        private void OnDestroy()
+        {
+            EventManager.Instance.enemyDeadEvent -= OnEnemyDead;
         }
 
         private void OnEnemyDead(Transform pos)
