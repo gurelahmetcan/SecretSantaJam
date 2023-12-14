@@ -10,6 +10,7 @@ namespace SantaProject
         [SerializeField] private GameObject expPrefab;
         [SerializeField] private GameObject player;
         [SerializeField] private Magnet magnet;
+        [SerializeField] private WeaponHolder weaponHolder;
 
         private static GameManager _instance;
 
@@ -72,6 +73,9 @@ namespace SantaProject
                     magnet.UpgradeMagnetRange();
                     break;
                 case Constants.UpgradeType.ExpModifier:
+                    break;
+                case Constants.UpgradeType.GunUpgrade:
+                    weaponHolder.UpgradeWeapon();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

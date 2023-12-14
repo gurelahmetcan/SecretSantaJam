@@ -18,5 +18,5 @@ MonoBehaviour:
   currentAmmo: 6
   magSize: 6
   fireRate: 200
-  reloadTime: 2
-  reloading: 0
+  reloadTime: 3
+  reloading: 1

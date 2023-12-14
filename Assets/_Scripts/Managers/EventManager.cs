@@ -33,11 +33,6 @@ namespace SantaProject
                 Instance = this;
             }
         }
-
-        public void AddExperience(int amount)
-        {
-            onExperienceChange?.Invoke(amount);
-        }
     }
 }
 

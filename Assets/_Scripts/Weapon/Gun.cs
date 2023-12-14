@@ -29,6 +29,8 @@ namespace SantaProject
         private void Start()
         {
             EventManager.Instance.onShootPressed += Shoot;
+            weaponData.currentAmmo = weaponData.magSize;
+            weaponData.reloading = false;
         }
 
         private void Update()
@@ -59,6 +61,8 @@ namespace SantaProject
         private IEnumerator Reload()
         {
             weaponData.reloading = true;
+            var anim = FindObjectOfType<PlayerStats>().GetComponent<Animator>();
+            anim.SetTrigger("isReloading");
             yield return new WaitForSeconds(weaponData.reloadTime);
             weaponData.currentAmmo = weaponData.magSize;
             weaponData.reloading = false;
@@ -66,7 +70,7 @@ namespace SantaProject
 
         private void Shoot()
         {
-            if (weaponData.currentAmmo > 0 && _canShoot)
+            if (weaponData.currentAmmo > 0 && _canShoot && gameObject.activeSelf)
             {
                 GameObject bullet = Instantiate(_bulletPrefab, _bulletDirection.position, _bulletDirection.rotation, _bulletContainer);
                 bullet.GetComponent<Bullet>().SetDamage(weaponData.damage);

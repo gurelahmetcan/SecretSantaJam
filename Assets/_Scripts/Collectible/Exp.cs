@@ -10,7 +10,7 @@ namespace SantaProject
         {
             Sequence mySequence = DOTween.Sequence();
             mySequence.Append(transform.DOMove(FindObjectOfType<PlayerStats>().transform.position, 0.2f))
-                .AppendCallback(() => EventManager.Instance.AddExperience(experience))
+                .AppendCallback(() => EventManager.Instance.onExperienceChange.Invoke(experience))
                 .AppendCallback(() => Destroy(gameObject));
         }
     }

@@ -10,6 +10,7 @@ namespace SantaProject
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float _speed;
+        [SerializeField] private WeaponHolder _weaponHolder;
         
         [Header("Dash Attributes")]
         [SerializeField] private float _dashingPower = 5f;
@@ -43,7 +44,7 @@ namespace SantaProject
         {
             _controls.Player.Shoot.performed += _ => EventManager.Instance.onShootPressed?.Invoke();
             _controls.Player.Dash.performed += _ => Dash();
-            //EventManager.Instance.onShoot += () => _animator.SetTrigger("isAttacking");
+            EventManager.Instance.onShoot += () => ShootAnim();
         }
 
         void Update()
@@ -92,6 +93,11 @@ namespace SantaProject
 
         #region Private Methods
         
+        private void ShootAnim()
+        {
+            _animator.SetTrigger("isAttacking");
+        }
+        
         private void Dash()
         {
             if (!_isDashing)
@@ -121,7 +127,6 @@ namespace SantaProject
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.15f);
             }
-            
             Vector3 movement = new Vector3(_move.x, 0f, _move.y);
             AnimateMove(movement);
             transform.Translate(movement * _speed * Time.deltaTime, Space.World);

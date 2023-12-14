@@ -8,7 +8,8 @@ namespace SantaProject
             Damage,
             FireRate,
             CollectRange,
-            ExpModifier
+            ExpModifier,
+            GunUpgrade
         }
         
         public enum EnemyType

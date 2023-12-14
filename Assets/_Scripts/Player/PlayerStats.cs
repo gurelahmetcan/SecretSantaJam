@@ -18,19 +18,17 @@ namespace SantaProject
 
             set => maxHealth = value;
         }
-        private void OnEnable()
+
+        private void Start()
         {
-            if (EventManager.Instance)
-            {
-                EventManager.Instance.onExperienceChange += HandleExperienceChange;
-            }
+            EventManager.Instance.onExperienceChange += HandleExperienceChange;
         }
-    
-        private void OnDisable()
+
+        private void OnDestroy()
         {
             EventManager.Instance.onExperienceChange -= HandleExperienceChange;
         }
-    
+
         private void HandleExperienceChange(int experienceAmount)
         {
             currentExperience += experienceAmount;
