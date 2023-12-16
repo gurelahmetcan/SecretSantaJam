@@ -14,6 +14,8 @@ namespace SantaProject
         [Header("Shooting")]
         public int damage;
         public float maxDistance;
+        public float spread;
+        public int shootAmount;
 
         [Header("Reloading")]
         public int currentAmmo;

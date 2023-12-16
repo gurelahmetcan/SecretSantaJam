@@ -15,7 +15,9 @@ MonoBehaviour:
   name: Pistol
   id: 0
   damage: 5
-  maxDistance: 150
+  maxDistance: 300
+  spread: 0
+  shootAmount: 1
   currentAmmo: 12
   magSize: 12
   fireRate: 400

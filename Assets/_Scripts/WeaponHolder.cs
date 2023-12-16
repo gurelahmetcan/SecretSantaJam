@@ -55,7 +55,7 @@ namespace SantaProject
 
         private void Shoot()
         {
-            weapons[selectedWeapon].Shoot();
+            weapons[selectedWeapon].ShootNew();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace SantaProject
 
         IEnumerator DestroyBulletAfterTimeCoroutine()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
             Destroy(gameObject);
         }
         
@@ -34,7 +34,7 @@ namespace SantaProject
         {
             if (other.gameObject.CompareTag("Enemy"))
             { 
-                other.gameObject.GetComponent<Enemy>().Damage(_damage);
+                //other.gameObject.GetComponent<Enemy>().Damage(_damage);
                 Destroy(gameObject);
             }
         }

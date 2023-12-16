@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SantaProject;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SantaProject
 {
@@ -22,14 +23,13 @@ namespace SantaProject
 
         private float timeSinceLastShot;
         private bool _canShoot => !weaponData.reloading && timeSinceLastShot > 1f / (weaponData.fireRate / 60f);
-        
+
         #endregion
 
         #region Unity Functions
 
-        private void Start()
+        private void Awake()
         {
-            //EventManager.Instance.onShootPressed += Shoot;
             weaponData.currentAmmo = weaponData.magSize;
             weaponData.reloading = false;
         }
@@ -42,11 +42,6 @@ namespace SantaProject
             {
                 StartReloading();
             }
-        }
-
-        private void OnDestroy()
-        {
-            //EventManager.Instance.onShootPressed -= Shoot;
         }
 
         #endregion
@@ -74,12 +69,69 @@ namespace SantaProject
             if (weaponData.currentAmmo > 0 && _canShoot && weaponData.id == GameManager.Instance.weaponHolder.GetSelectedWeapon())
             {
                 timeSinceLastShot = 0;
-                GameObject bullet = Instantiate(_bulletPrefab, _bulletDirection.position, _bulletDirection.rotation, _bulletContainer);
-                bullet.GetComponent<Bullet>().SetDamage(weaponData.damage);
-                bullet.SetActive(true);
-                _particle.Play();
+                var spread = weaponData.spread;
+                for (int i = 0; i < weaponData.shootAmount; i++)
+                {
+                    var pos = _bulletDirection.position;
+                    GameObject bullet = Instantiate(_bulletPrefab, pos, _bulletDirection.rotation, _bulletContainer);
+                    bullet.transform.localPosition = new Vector3(pos.x + spread, pos.y, pos.z);
+                    bullet.GetComponent<Bullet>().SetDamage(weaponData.damage);
+                    bullet.SetActive(true);
+                    weaponData.currentAmmo--;
+                    spread++;
+                }
+
+                if (!_particle.gameObject.activeSelf)
+                {
+                    _particle.gameObject.SetActive(true);
+                }
+                else
+                {
+                    _particle.Play();
+                }
                 EventManager.Instance.onShoot?.Invoke();
-                weaponData.currentAmmo--;
+            }
+        }
+        
+        public void ShootNew()
+        {
+            if (weaponData.currentAmmo > 0 && _canShoot)
+            {
+                timeSinceLastShot = 0;
+                var spread = weaponData.spread;
+                var shootAmount = weaponData.shootAmount;
+
+                for (int i = 0; i < shootAmount; i++)
+                {
+                    float x = Random.Range(-spread, spread);
+
+                    var transform1 = _bulletDirection.transform;
+                    Vector3 direction = transform1.forward + new Vector3(x, 0, 0);
+                    
+                    GameObject bullet = Instantiate(_bulletPrefab, transform1.position + new Vector3(x,0,0), _bulletDirection.rotation, _bulletContainer);
+                    //bullet.GetComponent<Bullet>().SetDamage(0);
+                    bullet.SetActive(true);
+
+                    if (Physics.Raycast(transform1.position, direction, out var rayHit, weaponData.maxDistance))
+                    {
+                        if (rayHit.collider.CompareTag("Enemy"))
+                        {
+                            rayHit.collider.GetComponent<Enemy>().Damage(weaponData.damage);
+                        }
+                    }
+                    
+                    weaponData.currentAmmo--;
+                }
+
+                if (!_particle.gameObject.activeSelf)
+                {
+                    _particle.gameObject.SetActive(true);
+                }
+                else
+                {
+                    _particle.Play();
+                }
+                EventManager.Instance.onShoot?.Invoke();
             }
         }
     }

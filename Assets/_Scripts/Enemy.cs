@@ -28,6 +28,7 @@ namespace SantaProject
         
         private Animator _animator;
         private bool _isMoving;
+        private bool _isAlive = true;
 
         #endregion
 
@@ -61,8 +62,9 @@ namespace SantaProject
         {
             hp -= damageTaken;
             
-            if (hp <= 0)
+            if (hp <= 0 && _isAlive)
             {
+                _isAlive = false;
                 EventManager.Instance.enemyDeadEvent.Invoke(gameObject.transform);
                 Destroy(gameObject);
             }
