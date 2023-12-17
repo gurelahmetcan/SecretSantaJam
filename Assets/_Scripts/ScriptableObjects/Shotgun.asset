@@ -15,10 +15,10 @@ MonoBehaviour:
   name: Shotgun
   id: 1
   damage: 10
-  maxDistance: 100
+  maxDistance: 5
   spread: 1
   shootAmount: 6
-  currentAmmo: 24
+  currentAmmo: 12
   magSize: 24
   fireRate: 200
   reloadTime: 2

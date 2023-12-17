@@ -30,6 +30,8 @@ namespace SantaProject
         private bool _isMoving;
         private bool _isAlive = true;
 
+        private Rigidbody _rigidbody;
+
         #endregion
 
         #region Unity Methods
@@ -49,6 +51,7 @@ namespace SantaProject
             
             _agent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
+            _rigidbody = GetComponent<Rigidbody>();
         }
 
         private void Update()
@@ -60,13 +63,15 @@ namespace SantaProject
         
         public void Damage(int damageTaken)
         {
-            hp -= damageTaken;
-            
-            if (hp <= 0 && _isAlive)
+            if (_isAlive)
             {
-                _isAlive = false;
-                EventManager.Instance.enemyDeadEvent.Invoke(gameObject.transform);
-                Destroy(gameObject);
+                hp -= damageTaken;
+            
+                if (hp <= 0)
+                {
+                    _isAlive = false;
+                    StartCoroutine(WaitBeforeDie());
+                }
             }
         }
 
@@ -90,6 +95,13 @@ namespace SantaProject
             _canDamage = false;
             yield return new WaitForSeconds(.5f);
             _canDamage = true;
+        }
+
+        IEnumerator WaitBeforeDie()
+        {
+            yield return new WaitForSeconds(.5f);
+            EventManager.Instance.enemyDeadEvent.Invoke(gameObject.transform);
+            Destroy(gameObject);
         }
         
         private void AnimateMove()

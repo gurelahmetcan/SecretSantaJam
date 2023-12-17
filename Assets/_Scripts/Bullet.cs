@@ -5,7 +5,7 @@ namespace SantaProject
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private float _speed = 12f;
+        [SerializeField] private float _speed = 20f;
         
         private int _damage;
         

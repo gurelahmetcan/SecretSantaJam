@@ -125,7 +125,7 @@ namespace SantaProject
 
             if (aimDirection != Vector3.zero)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.15f);
+                //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.15f);
             }
             Vector3 movement = new Vector3(_move.x, 0f, _move.y);
             AnimateMove(movement);

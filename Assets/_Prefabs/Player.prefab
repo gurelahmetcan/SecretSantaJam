@@ -79,7 +79,6 @@ GameObject:
   - component: {fileID: 324245461341840080}
   - component: {fileID: 43185486780827091}
   - component: {fileID: 6097373064191723166}
-  - component: {fileID: 7573806144199342306}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -155,24 +154,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7573806144199342306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103133678751142241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7add1724294ae6e4fb03d92753c83401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 344499b3f2b168f49bf84fa2b0a64ee3, type: 2}
-  _bulletPrefab: {fileID: 7283516033430754560, guid: e57153d941c2ca34e99c4e96703cd768,
-    type: 3}
-  _bulletDirection: {fileID: 3616666264074501954}
-  _bulletContainer: {fileID: 0}
-  _particle: {fileID: 8466436240618363759}
 --- !u!1 &1238723680070510647
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,9 +413,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 7573806144199342306}
-  - {fileID: 8712717431249457423}
+  - {fileID: 1103133678751142241}
+  - {fileID: 3775140107202388826}
+  data:
+  - {fileID: 11400000, guid: 344499b3f2b168f49bf84fa2b0a64ee3, type: 2}
+  - {fileID: 11400000, guid: bbd8a4b97c52da64eb16b11283984a8f, type: 2}
+  particles:
+  - {fileID: 8466436240618363759}
+  - {fileID: 2076470755441761950}
   animator: {fileID: 7340332359955646207}
+  autoShoot: {fileID: 9128781876170106395}
 --- !u!1 &2839343088452916344
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +658,6 @@ GameObject:
   - component: {fileID: 5255821567662079794}
   - component: {fileID: 3238851883041073751}
   - component: {fileID: 7715155499147535219}
-  - component: {fileID: 8712717431249457423}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -745,24 +732,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8712717431249457423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3775140107202388826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7add1724294ae6e4fb03d92753c83401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: bbd8a4b97c52da64eb16b11283984a8f, type: 2}
-  _bulletPrefab: {fileID: 7283516033430754560, guid: e57153d941c2ca34e99c4e96703cd768,
-    type: 3}
-  _bulletDirection: {fileID: 6168959050823354887}
-  _bulletContainer: {fileID: 0}
-  _particle: {fileID: 2076470755441761950}
 --- !u!1 &4150494184161213267
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +913,7 @@ GameObject:
   - component: {fileID: 931314803232620142}
   - component: {fileID: 2029654918407963318}
   - component: {fileID: 7340332359955646207}
+  - component: {fileID: 9128781876170106395}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1145,6 +1115,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9128781876170106395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5269618472770433415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce3e507e68d3f34f951611726fe44b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7283516033430754560, guid: e57153d941c2ca34e99c4e96703cd768,
+    type: 3}
+  _bulletDirection: {fileID: 3616666264074501954}
+  _bulletContainer: {fileID: 0}
 --- !u!1 &5356345063976646138
 GameObject:
   m_ObjectHideFlags: 0

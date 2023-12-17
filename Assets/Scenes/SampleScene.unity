@@ -3847,6 +3847,12 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!198 &1990840658 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8466436240618363759, guid: a03feffa2f6baa447a192d402f5e289c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8309319003370016462}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2128092066
 GameObject:
   m_ObjectHideFlags: 0
@@ -4662,15 +4668,30 @@ PrefabInstance:
       objectReference: {fileID: 1461696216}
     - target: {fileID: 5995092132611846121, guid: a03feffa2f6baa447a192d402f5e289c,
         type: 3}
+      propertyPath: _particle
+      value: 
+      objectReference: {fileID: 1990840658}
+    - target: {fileID: 5995092132611846121, guid: a03feffa2f6baa447a192d402f5e289c,
+        type: 3}
       propertyPath: _bulletContainer
       value: 
       objectReference: {fileID: 1461696216}
+    - target: {fileID: 7573806144199342306, guid: a03feffa2f6baa447a192d402f5e289c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7573806144199342306, guid: a03feffa2f6baa447a192d402f5e289c,
         type: 3}
       propertyPath: _bulletContainer
       value: 
       objectReference: {fileID: 1461696216}
     - target: {fileID: 8712717431249457423, guid: a03feffa2f6baa447a192d402f5e289c,
+        type: 3}
+      propertyPath: _bulletContainer
+      value: 
+      objectReference: {fileID: 1461696216}
+    - target: {fileID: 9128781876170106395, guid: a03feffa2f6baa447a192d402f5e289c,
         type: 3}
       propertyPath: _bulletContainer
       value: 
