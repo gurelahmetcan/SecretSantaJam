@@ -79,7 +79,7 @@ namespace SantaProject
                 {
                     canShoot = false;
 
-                    StartCoroutine("AllowToShoot");
+                    StartCoroutine(AllowToShoot());
 
                     GameObject bullet = Instantiate(bulletPrefab, transform.position, _bulletDirection.rotation, _bulletContainer);
                     bullet.SetActive(true);
@@ -155,7 +155,7 @@ namespace SantaProject
             weaponData.reloading = false;
         }
         
-        IEnumerator AllowToShoot ()
+        IEnumerator AllowToShoot()
         {
             yield return new WaitForSeconds(1);
             canShoot = true;
