@@ -116,7 +116,7 @@ namespace SantaProject
                     {
                         if (rayHit.collider.CompareTag("Enemy"))
                         {
-                            rayHit.collider.GetComponent<Enemy>().Damage(weaponData.damage);
+                            //rayHit.collider.GetComponent<Enemy>().Damage(weaponData.damage);
                         }
                     }
                     

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,12 +31,10 @@ namespace SantaProject
         #endregion
         
         #region Unity Methods
-        
+
         void Start()
         {
             nearestEnemyDistance = Mathf.Infinity;
-            weaponData.currentAmmo = weaponData.magSize;
-            weaponData.reloading = false;
         }
 
         void Update () {
@@ -64,6 +63,8 @@ namespace SantaProject
         public void ChangeWeapon(WeaponData data, ParticleSystem particle)
         {
             weaponData = data;
+            weaponData.currentAmmo = weaponData.magSize;
+            weaponData.reloading = false;
             _particle = particle;
         }
 
@@ -83,7 +84,7 @@ namespace SantaProject
 
                     GameObject bullet = Instantiate(bulletPrefab, transform.position, _bulletDirection.rotation, _bulletContainer);
                     bullet.SetActive(true);
-                    target.GetComponent<Enemy>().Damage(weaponData.damage);
+                    target.GetComponent<Enemy>().Damage(weaponData.damage, transform);
                     
                     if (!_particle.gameObject.activeSelf)
                     {

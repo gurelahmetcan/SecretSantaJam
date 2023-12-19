@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
         Enemy randomEnemy = enemies[GetRandomEnemyIndex()];
         
         Instantiate(randomEnemy.prefab, transform.position + GetOffset(), transform.rotation);
-        
+        EventManager.Instance.onEnemySpawned.Invoke();
         _spawnTimer = baseTime;
     }
 

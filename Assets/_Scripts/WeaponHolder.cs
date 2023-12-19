@@ -19,11 +19,7 @@ namespace SantaProject
         {
             SelectWeapon();
         }
-
-        private void OnDestroy()
-        {
-        }
-
+        
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.K))

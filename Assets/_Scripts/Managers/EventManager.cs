@@ -20,6 +20,7 @@ namespace SantaProject
         public Action onShootPressed;
         public Action onShoot;
         public Action<float> onDashPressed;
+        public Action onEnemySpawned;
 
         // Singleton Check
         private void Awake()

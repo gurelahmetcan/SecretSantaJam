@@ -30,8 +30,9 @@ namespace SantaProject
         private bool _isMoving;
         private bool _isAlive = true;
 
-        private Rigidbody _rigidbody;
-
+        private bool _knockback;
+        private Vector3 direction;
+        
         #endregion
 
         #region Unity Methods
@@ -51,7 +52,11 @@ namespace SantaProject
             
             _agent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
-            _rigidbody = GetComponent<Rigidbody>();
+        }
+
+        private void Start()
+        {
+            _knockback = false;
         }
 
         private void Update()
@@ -59,14 +64,32 @@ namespace SantaProject
             ChasePlayer();
         }
 
+        private void FixedUpdate()
+        {
+            if (_knockback)
+            {
+                _agent.velocity = transform.forward * -3;
+            }
+        }
+
         #endregion
+
+        IEnumerator KnockBack()
+        {
+            _knockback = true;
+
+            yield return new WaitForSeconds(0.2f);
+            
+            _knockback = false;
+        }
         
-        public void Damage(int damageTaken)
+        public void Damage(int damageTaken, Transform hitPos)
         {
             if (_isAlive)
             {
                 hp -= damageTaken;
-            
+                direction = hitPos.transform.forward;
+                StartCoroutine(KnockBack());
                 if (hp <= 0)
                 {
                     _isAlive = false;
