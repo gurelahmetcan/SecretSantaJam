@@ -592,6 +592,7 @@ GameObject:
   - component: {fileID: 7316360994851126778}
   - component: {fileID: 5529892571127609702}
   - component: {fileID: 1042460144062616547}
+  - component: {fileID: 2140934655428475117}
   m_Layer: 0
   m_Name: HardEnemy
   m_TagString: Enemy
@@ -678,6 +679,7 @@ MonoBehaviour:
   damage: 4
   _agent: {fileID: 7316360994851126778}
   type: 1
+  flashEffect: {fileID: 2140934655428475117}
   weight: 110
   prefab: {fileID: 4912693083432876049}
   chance: 10
@@ -702,6 +704,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2140934655428475117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4912693083432876049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abdeb38e8cd76d041a351758b79c5c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 760d7264a36732242ba0ca61b550e91d, type: 2}
+  duration: 0.125
+  spriteRenderer: {fileID: 781429218247091044}
 --- !u!1 &5028988901441786768
 GameObject:
   m_ObjectHideFlags: 0

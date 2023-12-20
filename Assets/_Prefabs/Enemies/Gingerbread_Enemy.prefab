@@ -1044,6 +1044,7 @@ GameObject:
   - component: {fileID: 8150813474320791253}
   - component: {fileID: 1118956115364604910}
   - component: {fileID: 1297937662077092582}
+  - component: {fileID: 903209556927871617}
   m_Layer: 0
   m_Name: Gingerbread_Enemy
   m_TagString: Enemy
@@ -1107,6 +1108,7 @@ MonoBehaviour:
   damage: 2
   _agent: {fileID: 1118956115364604910}
   type: 0
+  flashEffect: {fileID: 903209556927871617}
   weight: 100
   prefab: {fileID: 7840162258690823560}
   chance: 100
@@ -1153,6 +1155,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &903209556927871617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840162258690823560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abdeb38e8cd76d041a351758b79c5c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 760d7264a36732242ba0ca61b550e91d, type: 2}
+  duration: 0.125
+  spriteRenderer: {fileID: 6171927830028225718}
 --- !u!1 &8013045599101275374
 GameObject:
   m_ObjectHideFlags: 0

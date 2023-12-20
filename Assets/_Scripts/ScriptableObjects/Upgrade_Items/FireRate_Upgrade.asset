@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc094ba6c3761584996ede54f1342bd3, type: 3}
   m_Name: FireRate_Upgrade
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
-  Title: 
+  Icon: {fileID: 21300000, guid: 0a72324a418ef1a4ebfdae2b2da3c495, type: 3}
+  Title: Fire Rate
   Description: 
   UpgradeType: 2
   IncreaseAmount: 0.1

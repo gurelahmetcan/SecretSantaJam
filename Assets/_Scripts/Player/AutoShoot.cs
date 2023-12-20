@@ -110,7 +110,6 @@ namespace SantaProject
             // This happens if there simply is no object tagged "Enemy" in the scene
             if(enemies.Length == 0)
             {
-                Debug.LogWarning("No enemies found!", this);
                 return null;
             }
 

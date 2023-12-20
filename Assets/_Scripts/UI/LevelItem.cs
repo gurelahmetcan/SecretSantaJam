@@ -8,12 +8,12 @@ namespace SantaProject
     public class LevelItem : ScriptableObject
     {
         [Header("UI")] 
-        [SerializeField] private Sprite Icon;
-        [SerializeField] private string Title;
-        [SerializeField] private string Description;
+        public Sprite Icon;
+        public string Title;
+        public string Description;
 
-        [Header("Type")] [SerializeField] private Constants.UpgradeType UpgradeType;
+        [Header("Type")] public Constants.UpgradeType UpgradeType;
 
-        [Header("Stats")] [SerializeField] private float IncreaseAmount;
+        [Header("Stats")] public float IncreaseAmount;
     }
 }

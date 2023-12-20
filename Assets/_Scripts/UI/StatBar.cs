@@ -16,6 +16,8 @@ namespace SantaProject
         
         void Start()
         {
+            healthBar.fillAmount = 1f;
+            experienceBar.fillAmount = 0f;
             EventManager.Instance.onLevelUp += OnLevelChanged;
             EventManager.Instance.onHealthChange += OnHealthChanged;
             EventManager.Instance.onExpChange += OnExperienceChanged;

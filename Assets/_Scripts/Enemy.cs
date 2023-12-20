@@ -14,6 +14,7 @@ namespace SantaProject
         [SerializeField] private int damage;
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private Constants.EnemyType type;
+        [SerializeField] private SimpleFlash flashEffect;
 
         [HideInInspector] public double weight;
         
@@ -87,6 +88,7 @@ namespace SantaProject
         {
             if (_isAlive)
             {
+                flashEffect.Flash();
                 hp -= damageTaken;
                 direction = hitPos.transform.forward;
                 StartCoroutine(KnockBack());

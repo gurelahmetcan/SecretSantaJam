@@ -8,7 +8,7 @@ namespace SantaProject
     public class MainUI : MonoBehaviour
     {
         [SerializeField] private GameObject statBar;
-        [SerializeField] private GameObject levelUpBar;
+        [SerializeField] private LevelUpPanel levelUpPanel;
 
         private static MainUI _instance;
         private int _presentAmount;
@@ -42,6 +42,8 @@ namespace SantaProject
         {
             EventManager.Instance.onLevelUp += OnLevelChanged;
             EventManager.Instance.onPresentCollected += OnPresentCollected;
+
+            levelUpPanel.InitializeUpgradePool();
         }
 
         private void OnDestroy()
@@ -52,12 +54,13 @@ namespace SantaProject
 
         private void OnLevelChanged(int newLevel)
         {
+            levelUpPanel.CreateUpgrades();
             OpenCloseLevelUp(true);
         }
 
         public void OpenCloseLevelUp(bool isOpen)
         {
-            levelUpBar.SetActive(isOpen);
+            levelUpPanel.gameObject.SetActive(isOpen);
             Time.timeScale = isOpen ? 0 : 1;
         }
 

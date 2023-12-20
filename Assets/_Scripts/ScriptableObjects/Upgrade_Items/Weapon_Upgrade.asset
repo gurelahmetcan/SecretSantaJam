@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc094ba6c3761584996ede54f1342bd3, type: 3}
-  m_Name: Damage_Upgrade
+  m_Name: Weapon_Upgrade
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
-  Title: 
+  Icon: {fileID: 21300000, guid: 6d30aecb30aab2e4b8c38adba7f9f20f, type: 3}
+  Title: Shotgun
   Description: 
-  UpgradeType: 1
-  IncreaseAmount: 2
+  UpgradeType: 5
+  IncreaseAmount: 0
