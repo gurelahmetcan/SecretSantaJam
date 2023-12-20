@@ -42,10 +42,10 @@ namespace SantaProject
             EventManager.Instance.enemyDeadEvent -= OnEnemyDead;
         }
 
-        private void OnEnemyDead(Transform pos)
+        private void OnEnemyDead(GameObject pos)
         {
-            var position = pos.position;
-            Instantiate(expPrefab, new Vector3(position.x, 0.5f, position.z), pos.rotation);
+            var position = pos.transform.position;
+            Instantiate(expPrefab, new Vector3(position.x, 0.5f, position.z), pos.transform.rotation);
         }
 
         public void HealPlayer(int healAmount)

@@ -123,7 +123,7 @@ namespace SantaProject
         IEnumerator WaitBeforeDie()
         {
             yield return new WaitForSeconds(.5f);
-            EventManager.Instance.enemyDeadEvent.Invoke(gameObject.transform);
+            EventManager.Instance.enemyDeadEvent.Invoke(gameObject);
             Destroy(gameObject);
         }
         

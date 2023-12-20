@@ -14,13 +14,15 @@ namespace SantaProject
         public Action<int, int> onExpChange;
         public Action onPresentCollected;
 
-        public Action<Transform> enemyDeadEvent;
+        public Action<GameObject> enemyDeadEvent;
 
         [Header("Player Events")] 
         public Action onShootPressed;
         public Action onShoot;
         public Action<float> onDashPressed;
-        public Action onEnemySpawned;
+        public Action<GameObject> onEnemySpawned;
+        public Action<int> onWaveEnd;
+        public Action onWaveBreakEnds;
 
         // Singleton Check
         private void Awake()

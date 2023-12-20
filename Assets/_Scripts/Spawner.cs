@@ -33,11 +33,12 @@ public class Spawner : MonoBehaviour
     {
         if (!(_spawnTimer <= 0) || !_canSpawn) return;
 
+        _spawnTimer = baseTime;
+
         Enemy randomEnemy = enemies[GetRandomEnemyIndex()];
         
-        Instantiate(randomEnemy.prefab, transform.position + GetOffset(), transform.rotation);
-        EventManager.Instance.onEnemySpawned.Invoke();
-        _spawnTimer = baseTime;
+        var newEnemy= Instantiate(randomEnemy.prefab, transform.position + GetOffset(), transform.rotation);
+        EventManager.Instance.onEnemySpawned.Invoke(newEnemy);
     }
 
     #region Private Methods
