@@ -19,6 +19,7 @@ namespace SantaProject
         private float nearestEnemyDistance;
         
         private ParticleSystem _particle;
+        private AudioSource audioSource;
 
         #endregion
         
@@ -27,6 +28,7 @@ namespace SantaProject
         void Start()
         {
             nearestEnemyDistance = Mathf.Infinity;
+            audioSource = GetComponent<AudioSource>();
         }
 
         void Update () {
@@ -84,6 +86,10 @@ namespace SantaProject
                     {
                         _particle.Play();
                     }
+
+                    audioSource.clip = weaponData.shootSound;
+                    audioSource.Play();
+                    
                     EventManager.Instance.onShoot?.Invoke();
                     weaponData.currentAmmo--;
                 }

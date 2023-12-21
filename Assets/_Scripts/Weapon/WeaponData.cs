@@ -10,6 +10,7 @@ namespace SantaProject
         [Header("Info")]
         public new string name;
         public int id;
+        public AudioClip shootSound;
 
         [Header("Shooting")]
         public int damage;
