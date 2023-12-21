@@ -16,7 +16,7 @@ namespace SantaProject
 
         public void UpgradeMagnetRange()
         {
-            _collider.radius = .5f;
+            _collider.radius += .5f;
         }
 
         private void OnTriggerEnter(Collider other)

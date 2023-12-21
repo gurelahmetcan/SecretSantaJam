@@ -38,13 +38,13 @@ namespace SantaProject
         
         private void OnExperienceChanged(int currentExp, int maxExp)
         {
-            //TODO: There is a problem in here that makes game crash probably when you get two XP at the same time
-
+            /*
             if (mySequence != null)
             {
                 mySequence.Kill();
                 mySequence = null;
             }
+            */
             
             mySequence = DOTween.Sequence();
             float targetVal = (float)currentExp / maxExp;
@@ -54,7 +54,6 @@ namespace SantaProject
             {
                 mySequence.AppendCallback(() =>
                 {
-                    Debug.Log("Here");
                     newLevel = int.Parse(levelText.text) + 1;
                     levelText.text = newLevel.ToString();
                     EventManager.Instance.onLevelUp?.Invoke();

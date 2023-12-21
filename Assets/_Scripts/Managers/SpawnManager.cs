@@ -7,9 +7,12 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private Spawner[] _spawners;
+    [SerializeField] private Transform bossSpawnPos;
+    [SerializeField] private GameObject bossPrefab;
 
     private bool canSpawn = true;
     private bool eventSent;
+    private bool bossSpawn;
     
     private int enemyCount;
     private int waveCount = 1;
@@ -45,7 +48,18 @@ public class SpawnManager : MonoBehaviour
         {
             eventSent = true;
             waveCount++;
+            if (waveCount == 3)
+            {
+                bossSpawn = true;
+            }
+            
             EventManager.Instance.onWaveEnd.Invoke(waveCount);
+        }
+
+        if (bossSpawn)
+        {
+            bossSpawn = false;
+            SpawnBoss();
         }
     }
 
@@ -70,5 +84,10 @@ public class SpawnManager : MonoBehaviour
         enemyCount = 0;
         enemyAmount += 5;
         canSpawn = true;
+    }
+
+    private void SpawnBoss()
+    {
+        Instantiate(bossPrefab, bossSpawnPos.position, bossSpawnPos.rotation);
     }
 }
