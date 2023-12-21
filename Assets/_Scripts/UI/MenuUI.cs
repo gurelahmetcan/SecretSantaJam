@@ -11,6 +11,11 @@ namespace SantaProject
         {
             SceneManager.LoadScene(1);
         }
+
+        public void OnExitPressed()
+        {
+            Application.Quit();
+        }
     }
 
 }

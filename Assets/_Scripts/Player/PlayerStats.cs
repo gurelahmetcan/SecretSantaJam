@@ -66,7 +66,6 @@ namespace SantaProject
     
         private void LevelUp()
         {
-            maxHealth += 10;
             currentHealth = maxHealth;
     
             currentLevel++;
@@ -74,8 +73,7 @@ namespace SantaProject
             maxExperience += 100;
             
             EventManager.Instance.onHealthChange?.Invoke(currentHealth, maxHealth);
-            EventManager.Instance.onLevelUp?.Invoke(currentLevel);
-            EventManager.Instance.onExpChange?.Invoke(currentExperience, maxExperience);
+            //EventManager.Instance.onExpChange?.Invoke(currentExperience, maxExperience);
         }
     }
 }

@@ -82,8 +82,8 @@ namespace SantaProject
 
                     StartCoroutine(AllowToShoot());
 
-                    GameObject bullet = Instantiate(bulletPrefab, transform.position, _bulletDirection.rotation, _bulletContainer);
-                    bullet.SetActive(true);
+                    //GameObject bullet = Instantiate(bulletPrefab, transform.position, _bulletDirection.rotation, _bulletContainer);
+                    //bullet.SetActive(true);
                     target.GetComponent<Enemy>().Damage(weaponData.damage, transform);
                     
                     if (!_particle.gameObject.activeSelf)

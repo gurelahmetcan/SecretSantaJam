@@ -9,7 +9,7 @@ namespace SantaProject
 
         [Header("Pick Up Events")]
         public Action<int> onExperienceChange;
-        public Action<int> onLevelUp;
+        public Action onLevelUp;
         public Action<int, int> onHealthChange;
         public Action<int, int> onExpChange;
         public Action onPresentCollected;

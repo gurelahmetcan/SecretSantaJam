@@ -52,7 +52,7 @@ namespace SantaProject
             EventManager.Instance.onPresentCollected -= OnPresentCollected;
         }
 
-        private void OnLevelChanged(int newLevel)
+        private void OnLevelChanged()
         {
             levelUpPanel.CreateUpgrades();
             OpenCloseLevelUp(true);
