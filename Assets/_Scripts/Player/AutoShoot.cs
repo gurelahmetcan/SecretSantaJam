@@ -76,7 +76,14 @@ namespace SantaProject
 
                     StartCoroutine(AllowToShoot());
 
-                    target.GetComponent<Enemy>().Damage(weaponData.damage, transform);
+                    if (target.GetComponent<Enemy>() == null)
+                    {
+                        target.GetComponent<Yeti>().Damage(weaponData.damage);
+                    }
+                    else
+                    {
+                        target.GetComponent<Enemy>().Damage(weaponData.damage, transform);
+                    }
                     
                     if (!_particle.gameObject.activeSelf)
                     {

@@ -103,8 +103,15 @@ namespace SantaProject
             yield return new WaitForSeconds(.5f);
             var animName = "isDead";
             _animator.SetBool(animName, true);
-            //EventManager.Instance.enemyDeadEvent.Invoke(gameObject);
-            //Destroy(gameObject);
+            _agent.isStopped = true;
+        }
+        
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                _playerTransform.GetComponent<PlayerStats>().TakeDamage(GiveDamage());
+            }
         }
 
         #endregion

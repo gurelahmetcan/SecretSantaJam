@@ -134,6 +134,14 @@ namespace SantaProject
             var animName = type == Constants.EnemyType.Normal ? "isWalking" : "isAggroWalking";
             _animator.SetBool(animName, !_agent.isStopped);
         }
+        
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                _playerTransform.GetComponent<PlayerStats>().TakeDamage(GiveDamage());
+            }
+        }
     }
     
 }

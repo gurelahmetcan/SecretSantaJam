@@ -138,14 +138,7 @@ namespace SantaProject
             transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
             _animator.SetBool("isWalking", _isMoving);
         }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            if (other.gameObject.CompareTag("Enemy"))
-            {
-                _playerStats.TakeDamage(other.gameObject.GetComponent<Enemy>().GiveDamage());
-            }
-        }
+        
         #endregion
     }
     
