@@ -60,6 +60,7 @@ namespace SantaProject
             {
                 case Constants.UpgradeType.Hp:
                     player.GetComponent<PlayerStats>().MaxHealth += 5;
+                    player.GetComponent<PlayerStats>().ChangeHealth();
                     break;
                 case Constants.UpgradeType.Damage:
 

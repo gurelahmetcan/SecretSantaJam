@@ -39,7 +39,11 @@ namespace SantaProject
             {
                 LevelUp();
             }
-            
+        }
+
+        public void InitPlayer()
+        {
+            ChangeHealth();
         }
     
         public void TakeHeal(int healAmount)
@@ -67,15 +71,21 @@ namespace SantaProject
     
         private void LevelUp()
         {
-            currentHealth = maxHealth;
-    
             currentLevel++;
             currentExperience = 0;
             maxExperience += 100;
+
+            ChangeHealth();
             
-            EventManager.Instance.onHealthChange?.Invoke(currentHealth, maxHealth);
             //EventManager.Instance.onLevelUp?.Invoke();
             EventManager.Instance.onExpChange?.Invoke(currentExperience, maxExperience);
+        }
+
+        public void ChangeHealth()
+        {
+            currentHealth = maxHealth;
+
+            EventManager.Instance.onHealthChange?.Invoke(currentHealth, maxHealth);
         }
     }
 }

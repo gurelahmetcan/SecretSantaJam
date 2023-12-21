@@ -11,6 +11,7 @@ namespace SantaProject
     public class StatBar : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI levelText;
+        [SerializeField] private TextMeshProUGUI healthText;
         [SerializeField] private Image healthBar;
         [SerializeField] private Image experienceBar;
 
@@ -22,6 +23,7 @@ namespace SantaProject
             experienceBar.fillAmount = 0f;
             EventManager.Instance.onHealthChange += OnHealthChanged;
             EventManager.Instance.onExpChange += OnExperienceChanged;
+            FindObjectOfType<PlayerStats>().GetComponent<PlayerStats>().InitPlayer();
         }
 
         private void OnDestroy()
@@ -32,6 +34,7 @@ namespace SantaProject
 
         private void OnHealthChanged(int currentHealth, int maxHealth)
         {
+            healthText.text = $"{currentHealth}/{maxHealth}";
             float targetVal = (float)currentHealth / maxHealth;
             healthBar.DOFillAmount(targetVal, 1f);
         }

@@ -8,14 +8,6 @@ namespace SantaProject
 {
     public class AutoShoot : MonoBehaviour
     {
-        #region Fields
-
-        [SerializeField] private GameObject bulletPrefab;
-        [SerializeField] private Transform _bulletDirection;
-        [SerializeField] private Transform _bulletContainer;
-
-        #endregion
-
         #region Variables
 
         private bool canShoot = true;
@@ -82,8 +74,6 @@ namespace SantaProject
 
                     StartCoroutine(AllowToShoot());
 
-                    //GameObject bullet = Instantiate(bulletPrefab, transform.position, _bulletDirection.rotation, _bulletContainer);
-                    //bullet.SetActive(true);
                     target.GetComponent<Enemy>().Damage(weaponData.damage, transform);
                     
                     if (!_particle.gameObject.activeSelf)
