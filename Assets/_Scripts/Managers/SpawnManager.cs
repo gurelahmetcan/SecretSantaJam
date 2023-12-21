@@ -48,6 +48,7 @@ public class SpawnManager : MonoBehaviour
         {
             eventSent = true;
             waveCount++;
+
             if (waveCount == 3)
             {
                 bossSpawn = true;
@@ -84,6 +85,7 @@ public class SpawnManager : MonoBehaviour
         enemyCount = 0;
         enemyAmount += 5;
         canSpawn = true;
+        eventSent = false;
     }
 
     private void SpawnBoss()
