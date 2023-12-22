@@ -76,6 +76,7 @@ namespace SantaProject
 
                     StartCoroutine(AllowToShoot());
 
+                    //Check Enemy Type
                     if (target.GetComponent<Enemy>() == null)
                     {
                         target.GetComponent<Yeti>().Damage(weaponData.damage);
@@ -94,8 +95,11 @@ namespace SantaProject
                         _particle.Play();
                     }
 
+                    //Shoot sound
                     audioSource.clip = weaponData.shootSound;
                     audioSource.Play();
+                    
+                    //Camera Shake when shoot
                     CinemachineShake.Instance.ShakeCamera(1.25f, .1f);
                     
                     EventManager.Instance.onShoot?.Invoke();
