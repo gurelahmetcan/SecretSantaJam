@@ -91,7 +91,7 @@ namespace SantaProject
                 flashEffect.Flash();
                 hp -= damageTaken;
                 direction = hitPos.transform.forward;
-                StartCoroutine(KnockBack());
+                //StartCoroutine(KnockBack());
                 if (hp <= 0)
                 {
                     _isAlive = false;
@@ -124,7 +124,7 @@ namespace SantaProject
 
         IEnumerator WaitBeforeDie()
         {
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.2f);
             EventManager.Instance.enemyDeadEvent.Invoke(gameObject);
             Destroy(gameObject);
         }

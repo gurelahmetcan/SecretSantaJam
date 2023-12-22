@@ -104,6 +104,8 @@ namespace SantaProject
             var animName = "isDead";
             _animator.SetBool(animName, true);
             _agent.isStopped = true;
+            yield return new WaitForSeconds(2f);
+            Destroy(gameObject);
         }
         
         private void OnCollisionEnter(Collision other)

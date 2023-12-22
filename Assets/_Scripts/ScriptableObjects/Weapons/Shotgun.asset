@@ -15,11 +15,11 @@ MonoBehaviour:
   name: Shotgun
   id: 1
   shootSound: {fileID: 8300000, guid: 7490f59b74690e645a7e367601ab3521, type: 3}
-  damage: 10
+  damage: 9
   maxDistance: 5
   spread: 1
-  shootAmount: 6
-  currentAmmo: 12
+  shootAmount: 1
+  currentAmmo: 24
   magSize: 24
   fireRate: 200
   reloadTime: 2

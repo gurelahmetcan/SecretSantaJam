@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
     
     private int enemyCount;
     private int waveCount = 1;
-    private int enemyAmount = 5;
+    private int enemyAmount = 4;
 
     private List<GameObject> _enemies = new();
     
@@ -36,7 +36,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (canSpawn && waveCount <= 3)
+        if (canSpawn)
         {
             foreach (var spawner in _spawners)
             {
@@ -49,7 +49,7 @@ public class SpawnManager : MonoBehaviour
             eventSent = true;
             waveCount++;
 
-            if (waveCount == 3)
+            if (waveCount % 5 == 0)
             {
                 bossSpawn = true;
             }
@@ -83,7 +83,7 @@ public class SpawnManager : MonoBehaviour
     private void PrepareNewWave()
     {
         enemyCount = 0;
-        enemyAmount += 5;
+        enemyAmount += 2;
         canSpawn = true;
         eventSent = false;
     }

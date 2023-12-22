@@ -23,7 +23,6 @@ public class LevelUpPanel : MonoBehaviour
     
     public void CreateUpgrades()
     {
-        
         int selectedUpgrade1 = SelectUpgrade();
         int selectedUpgrade2 = SelectUpgrade();
         int selectedUpgrade3 = SelectUpgrade();
@@ -47,7 +46,6 @@ public class LevelUpPanel : MonoBehaviour
         upgradeItems[0].SetUpgradeCard(allLevelItems[selectedUpgrade1]);
         upgradeItems[1].SetUpgradeCard(allLevelItems[selectedUpgrade2]);
         upgradeItems[2].SetUpgradeCard(allLevelItems[selectedUpgrade3]);
-
     }
 
     private int SelectUpgrade()

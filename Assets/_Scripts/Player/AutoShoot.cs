@@ -101,8 +101,6 @@ namespace SantaProject
                     weaponData.currentAmmo--;
                 }
             }
-
-            EventManager.Instance.onShoot?.Invoke();
         }
 
         private GameObject FindClosestEnemy()
@@ -160,7 +158,7 @@ namespace SantaProject
         
         IEnumerator AllowToShoot()
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(.4f);
             canShoot = true;
         } 
 
