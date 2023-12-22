@@ -12,16 +12,20 @@ namespace SantaProject
         [Header("UI Elements")]
         [SerializeField] private TextMeshProUGUI title;
         [SerializeField] private TextMeshProUGUI desc;
+        [SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private Image icon;
         [SerializeField] private TextMeshProUGUI stats;
+        [SerializeField] private Image levelBar;
 
         private Constants.UpgradeType upgradeType;
         private LevelItem data;
+        private int level;
 
         public void OnCardSelection()
         {
             GameManager.Instance.UpgradePlayer(upgradeType);
             MainUI.Instance.OpenCloseLevelUp(false);
+            data.Level++;
         }
 
         public void SetUpgradeCard(LevelItem _data)
@@ -31,6 +35,8 @@ namespace SantaProject
             desc.text = data.Description;
             icon.sprite = data.Icon;
             upgradeType = data.UpgradeType;
+            levelBar.fillAmount = (float)data.Level / 8;
+            levelText.text = $"LEVEL {data.Level + 1}";
         }
     } 
 }

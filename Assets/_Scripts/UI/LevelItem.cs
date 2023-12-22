@@ -11,6 +11,7 @@ namespace SantaProject
         public Sprite Icon;
         public string Title;
         public string Description;
+        public int Level;
 
         [Header("Type")] public Constants.UpgradeType UpgradeType;
 

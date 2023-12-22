@@ -15,6 +15,7 @@ namespace SantaProject
         private static GameManager _instance;
         public int bonusDmg;
         public int bonusExp;
+        public bool shotgunUpgraded;
 
         public static GameManager Instance
         {
@@ -87,6 +88,7 @@ namespace SantaProject
                     break;
                 case Constants.UpgradeType.GunUpgrade:
                     weaponHolder.UpgradeWeapon();
+                    shotgunUpgraded = true;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

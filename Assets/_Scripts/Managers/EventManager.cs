@@ -23,6 +23,7 @@ namespace SantaProject
         public Action<GameObject> onEnemySpawned;
         public Action<int> onWaveEnd;
         public Action onWaveBreakEnds;
+        public Action onGameOver;
 
         // Singleton Check
         private void Awake()

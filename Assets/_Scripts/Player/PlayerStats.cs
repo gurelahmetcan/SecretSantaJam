@@ -66,6 +66,7 @@ namespace SantaProject
             if (currentHealth <= 0)
             {
                 Destroy(gameObject);
+                EventManager.Instance.onGameOver?.Invoke();
             }
         }
     

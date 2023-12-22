@@ -50,14 +50,13 @@ public class LevelUpPanel : MonoBehaviour
 
     private int SelectUpgrade()
     {
-        int number = Random.Range(0, allLevelItems.Count);
-
-        /*
-        while (levelPool[number]==null)
+        if (GameManager.Instance.shotgunUpgraded)
         {
-            number = Random.Range(0, allLevelItems.Count-1);
+            var shotgunUpgrade = allLevelItems.Find(x => x.Title == "Shotgun");
+            allLevelItems.Remove(shotgunUpgrade);
         }
-        */
+        
+        int number = Random.Range(0, allLevelItems.Count);
 
         return number;
     }
