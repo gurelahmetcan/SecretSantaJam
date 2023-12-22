@@ -13,6 +13,7 @@ namespace SantaProject
     {
         [SerializeField] private Image dashBar;
         [SerializeField] private TextMeshProUGUI waveText;
+        [SerializeField] private TextMeshProUGUI waveNumberText;
 
         private bool waveBreak;
         private float timeRemaining = 5f;
@@ -26,6 +27,7 @@ namespace SantaProject
         {
             EventManager.Instance.onDashPressed += OnDashPressed;
             EventManager.Instance.onWaveEnd += OnWaveEnd;
+            waveNumberText.text = $"WAVE: 1";
         }
 
         private void Update()
@@ -61,6 +63,7 @@ namespace SantaProject
         {
             waveBreak = true;
             waveText.gameObject.SetActive(true);
+            waveNumberText.text = $"WAVE: {wave}";
         }
     }
 

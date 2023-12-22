@@ -16,6 +16,7 @@ namespace SantaProject
         public int bonusDmg;
         public int bonusExp;
         public bool shotgunUpgraded;
+        public int killedEnemyCount;
 
         public static GameManager Instance
         {
@@ -50,6 +51,7 @@ namespace SantaProject
         private void OnEnemyDead(GameObject pos)
         {
             var position = pos.transform.position;
+            killedEnemyCount++;
             Instantiate(expPrefab, new Vector3(position.x, 0.5f, position.z), pos.transform.rotation);
         }
 
