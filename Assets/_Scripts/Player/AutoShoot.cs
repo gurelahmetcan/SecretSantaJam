@@ -96,6 +96,7 @@ namespace SantaProject
 
                     audioSource.clip = weaponData.shootSound;
                     audioSource.Play();
+                    CinemachineShake.Instance.ShakeCamera(1.25f, .1f);
                     
                     EventManager.Instance.onShoot?.Invoke();
                     weaponData.currentAmmo--;
