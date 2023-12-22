@@ -79,12 +79,14 @@ namespace SantaProject
                     //Check Enemy Type
                     if (target.GetComponent<Enemy>() == null)
                     {
-                        target.GetComponent<Yeti>().Damage(weaponData.damage);
+                        target.GetComponent<Yeti>().Damage(weaponData.damage + GameManager.Instance.bonusDmg);
                     }
                     else
                     {
-                        target.GetComponent<Enemy>().Damage(weaponData.damage, transform);
+                        target.GetComponent<Enemy>().Damage(weaponData.damage + GameManager.Instance.bonusDmg, transform);
                     }
+                    
+                    Debug.Log(weaponData.damage + GameManager.Instance.bonusDmg );
                     
                     if (!_particle.gameObject.activeSelf)
                     {

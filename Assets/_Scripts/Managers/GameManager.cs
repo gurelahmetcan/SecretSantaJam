@@ -13,6 +13,8 @@ namespace SantaProject
         public WeaponHolder weaponHolder;
 
         private static GameManager _instance;
+        public int bonusDmg;
+        public int bonusExp;
 
         public static GameManager Instance
         {
@@ -30,6 +32,8 @@ namespace SantaProject
         private void Awake()
         {
             _instance = this;
+            bonusDmg = 0;
+            bonusExp = 0;
         }
 
         private void Start()
@@ -63,7 +67,7 @@ namespace SantaProject
                     player.GetComponent<PlayerStats>().ChangeHealth();
                     break;
                 case Constants.UpgradeType.Damage:
-
+                    bonusDmg += 2;
                     break;
                 case Constants.UpgradeType.FireRate:
                     // TODO: FireRate Upgrade
@@ -79,6 +83,7 @@ namespace SantaProject
                     magnet.UpgradeMagnetRange();
                     break;
                 case Constants.UpgradeType.ExpModifier:
+                    bonusExp += 20;
                     break;
                 case Constants.UpgradeType.GunUpgrade:
                     weaponHolder.UpgradeWeapon();
