@@ -15,5 +15,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 54c58937fe505a646a58e99a40531474, type: 3}
   Title: Collect Range Upgrade
   Description: 
+  Level: 0
+  MaxLevel: 8
   UpgradeType: 3
   IncreaseAmount: 0

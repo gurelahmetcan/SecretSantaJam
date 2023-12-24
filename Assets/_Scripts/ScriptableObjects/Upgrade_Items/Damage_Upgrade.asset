@@ -15,5 +15,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: c9c3f2726c1308143a1a5e1d8fb3253f, type: 3}
   Title: Damage
   Description: 
+  Level: 0
+  MaxLevel: 8
   UpgradeType: 1
   IncreaseAmount: 2

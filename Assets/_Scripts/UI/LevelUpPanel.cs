@@ -21,49 +21,88 @@ public class LevelUpPanel : MonoBehaviour
 
     #endregion
     
+    private static LevelUpPanel _instance;
+
+    public static LevelUpPanel Instance
+    {
+        get
+        {
+            if (_instance is null)
+            {
+                Debug.Log("LevelUpPanel is NULL");
+            }
+
+            return _instance;
+        }
+    }
+    
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+    
     public void CreateUpgrades()
     {
         int selectedUpgrade1 = SelectUpgrade();
         int selectedUpgrade2 = SelectUpgrade();
         int selectedUpgrade3 = SelectUpgrade();
 
-        while (selectedUpgrade1 == selectedUpgrade2 || selectedUpgrade1 == selectedUpgrade3 || selectedUpgrade2 == selectedUpgrade3)
+        if (levelPool.Count >= 3)
         {
-            while (selectedUpgrade1.Equals(selectedUpgrade2))
+            while (selectedUpgrade1 == selectedUpgrade2 || selectedUpgrade1 == selectedUpgrade3 || selectedUpgrade2 == selectedUpgrade3)
             {
-                selectedUpgrade2 = SelectUpgrade();
-            }
-            while (selectedUpgrade1.Equals(selectedUpgrade3))
-            {
-                selectedUpgrade3 = SelectUpgrade();
-            }
-            while (selectedUpgrade2.Equals(selectedUpgrade3))
-            {
-                selectedUpgrade3 = SelectUpgrade();
+                while (selectedUpgrade1.Equals(selectedUpgrade2))
+                {
+                    selectedUpgrade2 = SelectUpgrade();
+                }
+                while (selectedUpgrade1.Equals(selectedUpgrade3))
+                {
+                    selectedUpgrade3 = SelectUpgrade();
+                }
+                while (selectedUpgrade2.Equals(selectedUpgrade3))
+                {
+                    selectedUpgrade3 = SelectUpgrade();
+                }
             }
         }
-
-        upgradeItems[0].SetUpgradeCard(allLevelItems[selectedUpgrade1]);
-        upgradeItems[1].SetUpgradeCard(allLevelItems[selectedUpgrade2]);
-        upgradeItems[2].SetUpgradeCard(allLevelItems[selectedUpgrade3]);
+        
+        upgradeItems[0].SetUpgradeCard(levelPool[selectedUpgrade1]);
+        upgradeItems[1].SetUpgradeCard(levelPool[selectedUpgrade2]);
+        upgradeItems[2].SetUpgradeCard(levelPool[selectedUpgrade3]);
     }
 
     private int SelectUpgrade()
     {
         if (GameManager.Instance.shotgunUpgraded)
         {
-            var shotgunUpgrade = allLevelItems.Find(x => x.Title == "Shotgun");
-            allLevelItems.Remove(shotgunUpgrade);
+            var shotgunUpgrade = levelPool.Find(x => x.Title == "Shotgun");
+            levelPool.Remove(shotgunUpgrade);
         }
         
-        int number = Random.Range(0, allLevelItems.Count);
+        int number = Random.Range(0, levelPool.Count);
 
         return number;
     }
 
-    public void RemoveFromPool(int remove)
+    public void RemoveFromPool(Constants.UpgradeType remove)
     {
-        levelPool.Remove(levelPool[remove]);
+        var removeObject = levelPool.Find(x => x.UpgradeType == remove);
+        if (removeObject != null)
+        {
+            Debug.Log($"Removed object {removeObject}");
+            levelPool.Remove(removeObject);
+        }
+        else
+        {
+            Debug.Log("There is no removeObject in pool");
+        }
     }
 
     public void InitializeUpgradePool()

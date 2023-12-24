@@ -15,5 +15,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 0a72324a418ef1a4ebfdae2b2da3c495, type: 3}
   Title: Fire Rate
   Description: 
+  Level: 0
+  MaxLevel: 8
   UpgradeType: 2
   IncreaseAmount: 0.1

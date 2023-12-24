@@ -15,5 +15,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: b915eebf2ecbf0341807dbc12c1300bf, type: 3}
   Title: Experience Modifier
   Description: 
+  Level: 0
+  MaxLevel: 8
   UpgradeType: 4
   IncreaseAmount: 0

@@ -15,5 +15,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 17b919c78c75ef347bb1f47bc802c3ae, type: 3}
   Title: Health Upgrade
   Description: 
+  Level: 0
+  MaxLevel: 8
   UpgradeType: 0
   IncreaseAmount: 10

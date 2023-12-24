@@ -12,6 +12,7 @@ namespace SantaProject
         public string Title;
         public string Description;
         public int Level;
+        public int MaxLevel;
 
         [Header("Type")] public Constants.UpgradeType UpgradeType;
 

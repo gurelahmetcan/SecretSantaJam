@@ -26,6 +26,10 @@ namespace SantaProject
             GameManager.Instance.UpgradePlayer(upgradeType);
             MainUI.Instance.OpenCloseLevelUp(false);
             data.Level++;
+            if (data.Level >= data.MaxLevel)
+            {
+                LevelUpPanel.Instance.RemoveFromPool(upgradeType);
+            }
         }
 
         public void SetUpgradeCard(LevelItem _data)
@@ -35,7 +39,7 @@ namespace SantaProject
             desc.text = data.Description;
             icon.sprite = data.Icon;
             upgradeType = data.UpgradeType;
-            levelBar.fillAmount = (float)data.Level / 8;
+            levelBar.fillAmount = (float)data.Level / data.MaxLevel;
             levelText.text = $"LEVEL {data.Level + 1}";
         }
     } 
