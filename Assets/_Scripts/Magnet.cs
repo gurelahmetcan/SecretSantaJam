@@ -21,6 +21,8 @@ namespace SantaProject
 
         private void OnTriggerEnter(Collider other)
         {
+            //TODO: Create ICollectible for more optimized use
+            
             if (other.gameObject.CompareTag("Experience"))
             {
                 var item = other.gameObject.GetComponent<Exp>();

@@ -60,17 +60,17 @@ namespace SantaProject
             player.GetComponent<PlayerStats>().TakeHeal(healAmount);
         }
 
-        public void UpgradePlayer(Constants.UpgradeType upgradeType)
+        public void UpgradePlayer(LevelItem _data)
         {
-            Debug.Log($"Upgrade Type: {upgradeType}");
-            switch (upgradeType)
+            Debug.Log($"Upgrade Type: {_data.UpgradeType}");
+            switch (_data.UpgradeType)
             {
                 case Constants.UpgradeType.Hp:
-                    player.GetComponent<PlayerStats>().MaxHealth += 5;
+                    player.GetComponent<PlayerStats>().MaxHealth += (int)_data.IncreaseAmount;
                     player.GetComponent<PlayerStats>().ChangeHealth();
                     break;
                 case Constants.UpgradeType.Damage:
-                    bonusDmg += 2;
+                    bonusDmg += (int)_data.IncreaseAmount;
                     break;
                 case Constants.UpgradeType.FireRate:
                     // TODO: FireRate Upgrade
@@ -86,7 +86,7 @@ namespace SantaProject
                     magnet.UpgradeMagnetRange();
                     break;
                 case Constants.UpgradeType.ExpModifier:
-                    bonusExp += 20;
+                    bonusExp += (int)_data.IncreaseAmount;
                     break;
                 case Constants.UpgradeType.GunUpgrade:
                     weaponHolder.UpgradeWeapon();

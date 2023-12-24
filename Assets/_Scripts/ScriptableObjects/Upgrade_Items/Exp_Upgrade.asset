@@ -18,4 +18,4 @@ MonoBehaviour:
   Level: 0
   MaxLevel: 8
   UpgradeType: 4
-  IncreaseAmount: 0
+  IncreaseAmount: 20

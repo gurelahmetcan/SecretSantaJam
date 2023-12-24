@@ -16,7 +16,6 @@ namespace SantaProject
         private WeaponData weaponData;
 
         private Transform nearestEnemy;
-        private float nearestEnemyDistance;
         
         private ParticleSystem _particle;
         private AudioSource audioSource;
@@ -27,7 +26,6 @@ namespace SantaProject
 
         void Start()
         {
-            nearestEnemyDistance = Mathf.Infinity;
             audioSource = GetComponent<AudioSource>();
         }
 

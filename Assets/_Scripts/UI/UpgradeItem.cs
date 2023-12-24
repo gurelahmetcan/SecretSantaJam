@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +20,7 @@ namespace SantaProject
 
         public void OnCardSelection()
         {
-            GameManager.Instance.UpgradePlayer(upgradeType);
+            GameManager.Instance.UpgradePlayer(data);
             MainUI.Instance.OpenCloseLevelUp(false);
             data.Level++;
             if (data.Level >= data.MaxLevel)

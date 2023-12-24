@@ -49,19 +49,19 @@ namespace SantaProject
 
         void Update()
         {
-            if (Time.timeScale == 0)
-            {
-                return;
-            }
-            
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(_mouseLook);
+            if (Time.timeScale == 0) return;
 
-            if (Physics.Raycast(ray, out hit))
+            if (Camera.main != null)
             {
-                _rotationTarget = hit.point;
+                Ray ray = Camera.main.ScreenPointToRay(_mouseLook);
+
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    _rotationTarget = hit.point;
+                }
             }
-            
+
             Move();
         }
 
@@ -84,11 +84,6 @@ namespace SantaProject
             _move = callbackContext.ReadValue<Vector2>();
         }
         
-        public void OnMouseLook(InputAction.CallbackContext callbackContext)
-        {
-            _mouseLook = callbackContext.ReadValue<Vector2>();
-        }
-
         #endregion
 
         #region Private Methods
@@ -117,16 +112,6 @@ namespace SantaProject
 
         private void Move()
         {
-            var lookPos = _rotationTarget - transform.position;
-            lookPos.y = 0;
-            var rotation = Quaternion.LookRotation(lookPos);
-
-            Vector3 aimDirection = new Vector3(_rotationTarget.x, 0f, _rotationTarget.z);
-
-            if (aimDirection != Vector3.zero)
-            {
-                //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.15f);
-            }
             Vector3 movement = new Vector3(_move.x, 0f, _move.y);
             AnimateMove(movement);
             transform.Translate(movement * _speed * Time.deltaTime, Space.World);

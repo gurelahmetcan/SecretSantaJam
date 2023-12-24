@@ -1033,19 +1033,7 @@ MonoBehaviour:
     m_ActionId: 263a6c14-f3fc-4537-9ee8-cb41e8b2f940
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 931314803232620142}
-        m_TargetAssemblyTypeName: SantaProject.PlayerController, Assembly-CSharp
-        m_MethodName: OnMouseLook
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 7d5c9d1a-3c25-48ed-8e55-f83cf2fadfec
     m_ActionName: Player/MouseLook[/Mouse/position]
   - m_PersistentCalls:
