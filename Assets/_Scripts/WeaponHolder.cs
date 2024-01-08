@@ -17,9 +17,10 @@ namespace SantaProject
 
         private void Start()
         {
-            SelectWeapon();
+            // TODO: Is this the best way to start ? This is for event invoke check again
+            StartCoroutine(LateStart(.01f));
         }
-        
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.K))
@@ -38,11 +39,18 @@ namespace SantaProject
         {
             return selectedWeapon;
         }
+        
+        IEnumerator LateStart(float waitTime)
+        {
+            yield return new WaitForSeconds(waitTime);
+            SelectWeapon();
+        }
 
         private void SelectWeapon()
         {
             int i = 0;
             autoShoot.ChangeWeapon(data[selectedWeapon], particles[selectedWeapon]);
+            EventManager.Instance.onAmmoChanged?.Invoke(data[selectedWeapon].currentAmmo, data[selectedWeapon].magSize, false);
             animator.SetInteger("weapon", selectedWeapon);
             foreach (var weapon in weapons)
             {

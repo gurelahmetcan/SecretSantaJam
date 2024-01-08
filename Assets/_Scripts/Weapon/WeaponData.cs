@@ -17,6 +17,7 @@ namespace SantaProject
         public float maxDistance;
         public float spread;
         public int shootAmount;
+        public bool canKnockBack;
 
         [Header("Reloading")]
         public int currentAmmo;

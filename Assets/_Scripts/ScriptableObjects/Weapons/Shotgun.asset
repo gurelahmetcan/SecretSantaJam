@@ -19,8 +19,9 @@ MonoBehaviour:
   maxDistance: 5
   spread: 1
   shootAmount: 1
-  currentAmmo: 24
-  magSize: 24
+  canKnockBack: 1
+  currentAmmo: 13
+  magSize: 6
   fireRate: 200
   reloadTime: 2
   reloading: 0

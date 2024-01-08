@@ -14,6 +14,7 @@ namespace SantaProject
         [SerializeField] private Image dashBar;
         [SerializeField] private TextMeshProUGUI waveText;
         [SerializeField] private TextMeshProUGUI waveNumberText;
+        [SerializeField] private TextMeshProUGUI weaponAmmoText;
 
         private bool waveBreak;
         private float timeRemaining = 5f;
@@ -27,6 +28,7 @@ namespace SantaProject
         {
             EventManager.Instance.onDashPressed += OnDashPressed;
             EventManager.Instance.onWaveEnd += OnWaveEnd;
+            EventManager.Instance.onAmmoChanged += OnAmmoChanged;
             waveNumberText.text = $"WAVE: 1";
         }
 
@@ -64,6 +66,11 @@ namespace SantaProject
             waveBreak = true;
             waveText.gameObject.SetActive(true);
             waveNumberText.text = $"WAVE: {wave}";
+        }
+
+        private void OnAmmoChanged(int currentAmmo, int maxAmmo, bool isReloading)
+        {
+            weaponAmmoText.text = isReloading ? "RELOADING" :  $"{currentAmmo}/{maxAmmo}";
         }
     }
 

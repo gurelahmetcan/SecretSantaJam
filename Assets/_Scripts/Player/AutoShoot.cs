@@ -19,6 +19,7 @@ namespace SantaProject
         
         private ParticleSystem _particle;
         private AudioSource audioSource;
+        private bool isOutOfRange=true;
 
         #endregion
         
@@ -32,18 +33,21 @@ namespace SantaProject
         void Update () {
             target = FindClosestEnemy();
 
-            if (weaponData.currentAmmo == 0 && !weaponData.reloading)
+            if (weaponData != null)
             {
-                StartReloading();
-            }
-            
-            if (target!=null)
-            {
-                transform.LookAt(target.transform);
-
-                if (canShoot && !weaponData.reloading)
+                if (CheckIfReload())
                 {
-                    Shoot();
+                    StartReloading();
+                }
+            
+                if (target!=null)
+                {
+                    transform.LookAt(target.transform);
+
+                    if (canShoot && !weaponData.reloading)
+                    {
+                        Shoot();
+                    }
                 }
             }
         }
@@ -70,6 +74,7 @@ namespace SantaProject
             {
                 if (Vector3.Distance(target.transform.position, transform.position)<= weaponData.maxDistance)
                 {
+                    isOutOfRange = false;
                     canShoot = false;
 
                     StartCoroutine(AllowToShoot());
@@ -81,11 +86,9 @@ namespace SantaProject
                     }
                     else
                     {
-                        target.GetComponent<Enemy>().Damage(weaponData.damage + GameManager.Instance.bonusDmg, transform);
+                        target.GetComponent<Enemy>().Damage(weaponData.damage + GameManager.Instance.bonusDmg, transform, weaponData.canKnockBack);
                     }
-                    
-                    Debug.Log(weaponData.damage + GameManager.Instance.bonusDmg );
-                    
+
                     if (!_particle.gameObject.activeSelf)
                     {
                         _particle.gameObject.SetActive(true);
@@ -104,6 +107,11 @@ namespace SantaProject
                     
                     EventManager.Instance.onShoot?.Invoke();
                     weaponData.currentAmmo--;
+                    EventManager.Instance.onAmmoChanged?.Invoke(weaponData.currentAmmo, weaponData.magSize, false);
+                }
+                else
+                {
+                    isOutOfRange = true;
                 }
             }
         }
@@ -147,6 +155,13 @@ namespace SantaProject
             }
         }
 
+        private bool CheckIfReload()
+        {
+            return ((weaponData.currentAmmo == 0) ||
+                    (weaponData.currentAmmo != weaponData.magSize && isOutOfRange) ||
+                    (weaponData.currentAmmo != weaponData.magSize && target == null)) && !weaponData.reloading;
+        }
+
         #endregion
 
         #region Coroutines
@@ -154,10 +169,12 @@ namespace SantaProject
         IEnumerator Reload()
         {
             weaponData.reloading = true;
+            EventManager.Instance.onAmmoChanged?.Invoke(weaponData.currentAmmo, weaponData.magSize, true);
             var anim = FindObjectOfType<PlayerStats>().GetComponent<Animator>();
             anim.SetTrigger("isReloading");
             yield return new WaitForSeconds(weaponData.reloadTime);
             weaponData.currentAmmo = weaponData.magSize;
+            EventManager.Instance.onAmmoChanged?.Invoke(weaponData.currentAmmo, weaponData.magSize, false);
             weaponData.reloading = false;
         }
         

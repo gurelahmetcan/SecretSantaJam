@@ -84,14 +84,19 @@ namespace SantaProject
             _knockback = false;
         }
         
-        public void Damage(int damageTaken, Transform hitPos)
+        public void Damage(int damageTaken, Transform hitPos, bool canKnockBack)
         {
             if (_isAlive)
             {
                 flashEffect.Flash();
                 hp -= damageTaken;
                 direction = hitPos.transform.forward;
-                //StartCoroutine(KnockBack());
+                
+                if (canKnockBack)
+                {
+                    StartCoroutine(KnockBack());
+                }
+                
                 if (hp <= 0)
                 {
                     _isAlive = false;

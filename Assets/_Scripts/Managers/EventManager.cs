@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SantaProject
 {
@@ -24,6 +25,7 @@ namespace SantaProject
         public Action<int> onWaveEnd;
         public Action onWaveBreakEnds;
         public Action onGameOver;
+        public Action<int,int,bool> onAmmoChanged;
 
         // Singleton Check
         private void Awake()
