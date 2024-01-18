@@ -9,6 +9,7 @@ TagManager:
   - Experience
   - Present
   - CollectDetector
+  - Deadzone
   layers:
   - Default
   - TransparentFX

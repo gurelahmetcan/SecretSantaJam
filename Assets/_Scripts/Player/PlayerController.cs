@@ -28,6 +28,8 @@ namespace SantaProject
         private PlayerStats _playerStats;
         private InputManager _controls;
         private Animator _animator;
+
+        private Vector3 lastPosBeforeDash;
         
         #endregion
         
@@ -104,6 +106,7 @@ namespace SantaProject
         private IEnumerator DashCoroutine()
         {
             _isDashing = true;
+            lastPosBeforeDash = transform.position;
             transform.DOMove(transform.position + (new Vector3(_move.x, 0f, _move.y) * _dashingPower), _dashingTime);
             EventManager.Instance.onDashPressed.Invoke(_dashingCooldown);
             yield return new WaitForSeconds(_dashingCooldown);
@@ -123,7 +126,19 @@ namespace SantaProject
             transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
             _animator.SetBool("isWalking", _isMoving);
         }
-        
+
+        private void OnCollisionStay(Collision other)
+        {
+            if (other.collider.CompareTag("Deadzone"))
+            {
+                if (_isDashing)
+                {
+                    transform.position = lastPosBeforeDash;
+                    _isDashing = false;
+                }
+            }
+        }
+
         #endregion
     }
     
